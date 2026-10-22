@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Anish D — AI & ML Engineer</title>
+
+    <meta
+        name="description"
+        content="Portfolio of Anish D — AI & ML student building intelligent systems with Computer Vision, Machine Learning, RAG and Generative AI."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --bg: #08090b;
+            --bg-soft: #0d0f12;
+            --card: rgba(255,255,255,0.035);
+            --card-hover: rgba(255,255,255,0.06);
+            --border: rgba(255,255,255,0.09);
+            --text: #f5f5f5;
+            --muted: #92969f;
+            --accent: #ffffff;
+            --green: #79e2a8;
+            --max: 1180px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 80% 10%, rgba(121,226,168,0.08), transparent 28%),
+                radial-gradient(circle at 10% 40%, rgba(255,255,255,0.035), transparent 25%),
+                var(--bg);
+            color: var(--text);
+            font-family: "DM Sans", sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.025;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: linear-gradient(to bottom, black, transparent 80%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(var(--max), calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            backdrop-filter: blur(18px);
+            background: rgba(8,9,11,0.72);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-inner {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-button {
+            padding: 9px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 13px;
+            transition: 0.25s;
+        }
+
+        .nav-button:hover {
+            background: white;
+            color: #08090b;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 7px 12px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.025);
+            border-radius: 100px;
+            color: #c9ccd1;
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 12px rgba(121,226,168,0.7);
+        }
+
+        h1 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(52px, 7vw, 88px);
+            line-height: 0.98;
+            letter-spacing: -5px;
+            max-width: 850px;
+        }
+
+        h1 .outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.55);
+        }
+
+        .hero-description {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 18px;
+            margin-top: 28px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 20px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #08090b;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px rgba(255,255,255,0.12);
+        }
+
+        .btn-secondary:hover {
+            background: var(--card-hover);
+            transform: translateY(-2px);
+        }
+
+        /* HERO CARD */
+
+        .hero-card {
+            position: relative;
+            min-height: 420px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.015));
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(121,226,168,0.08);
+            filter: blur(50px);
+        }
+
+        .orbit {
+            width: 250px;
+            height: 250px;
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 18s linear infinite;
+        }
+
+        .orbit::before,
+        .orbit::after {
+            content: "";
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 18px var(--green);
+        }
+
+        .orbit::before {
+            top: 18px;
+            left: 45px;
+        }
+
+        .orbit::after {
+            right: 20px;
+            bottom: 55px;
+        }
+
+        .core {
+            position: absolute;
+            inset: 50%;
+            transform: translate(-50%, -50%);
+            width: 105px;
+            height: 105px;
+            border-radius: 50%;
+            background: #11151a;
+            border: 1px solid rgba(121,226,168,0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--green);
+            box-shadow:
+                0 0 50px rgba(121,226,168,0.08),
+                inset 0 0 25px rgba(121,226,168,0.05);
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .floating-label {
+            position: absolute;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            background: rgba(10,11,13,0.8);
+            backdrop-filter: blur(12px);
+            border-radius: 8px;
+            color: #c5c8cd;
+            font-size: 11px;
+        }
+
+        .label-one {
+            top: 60px;
+            left: 35px;
+        }
+
+        .label-two {
+            right: 25px;
+            top: 125px;
+        }
+
+        .label-three {
+            bottom: 60px;
+            left: 55px;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 110px 0;
+            position: relative;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            margin-bottom: 45px;
+            gap: 30px;
+        }
+
+        .section-number {
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(35px, 5vw, 55px);
+            letter-spacing: -3px;
+            line-height: 1;
+        }
+
+        .section-description {
+            color: var(--muted);
+            max-width: 420px;
+            font-size: 14px;
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .about-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            background: var(--card);
+        }
+
+        .about-card h3 {
+            font-family: "Space Grotesk";
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .fact {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            background: rgba(255,255,255,0.025);
+        }
+
+        .fact span {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .fact strong {
+            font-size: 14px;
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .project {
+            position: relative;
+            padding: 30px;
+            min-height: 330px;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: var(--card);
+            overflow: hidden;
+            transition: 0.35s;
+        }
+
+        .project:hover {
+            transform: translateY(-6px);
+            background: var(--card-hover);
+            border-color: rgba(255,255,255,0.17);
+        }
+
+        .project.featured {
+            grid-column: span 2;
+            min-height: 370px;
+        }
+
+        .project-number {
+            color: #686c73;
+            font-family: "Space Grotesk";
+            font-size: 13px;
+        }
+
+        .project h3 {
+            font-family: "Space Grotesk";
+            font-size: 29px;
+            margin-top: 35px;
+            letter-spacing: -1px;
+        }
+
+        .project p {
+            color: var(--muted);
+            font-size: 14px;
+            max-width: 680px;
+            margin-top: 12px;
+            line-height: 1.75;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 24px;
+        }
+
+        .tag {
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 5px 10px;
+            color: #bfc2c7;
+            font-size: 11px;
+        }
+
+        .project-link {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.25s;
+        }
+
+        .project:hover .project-link {
+            background: white;
+            color: #08090b;
+            transform: rotate(45deg);
+        }
+
+        .project-glow {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(121,226,168,0.055);
+            filter: blur(55px);
+            right: -80px;
+            bottom: -100px;
+            pointer-events: none;
+        }
+
+        /* SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .skill-group {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 25px;
+            background: var(--card);
+        }
+
+        .skill-icon {
+            font-size: 24px;
+            margin-bottom: 18px;
+        }
+
+        .skill-group h3 {
+            font-family: "Space Grotesk";
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .skill-group p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* STACK */
+
+        .stack {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .stack-item {
+            flex: 1;
+            min-width: 130px;
+            padding: 23px 18px;
+            border-right: 1px solid var(--border);
+            color: #aaaeb5;
+            text-align: center;
+            font-family: "Space Grotesk";
+            font-size: 13px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .contact h2 {
+            font-size: clamp(45px, 7vw, 80px);
+        }
+
+        .contact p {
+            color: var(--muted);
+            margin: 25px auto 32px;
+            max-width: 550px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 25px 0;
+            color: #696d74;
+            font-size: 12px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* REVEAL ANIMATION */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .hero-card {
+                min-height: 330px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .project.featured {
+                grid-column: span 1;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: min(100% - 28px, var(--max));
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            h1 {
+                font-size: 52px;
+                letter-spacing: -3px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .section-heading {
+                display: block;
+            }
+
+            .section-description {
+                margin-top: 18px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .facts {
+                grid-template-columns: 1fr;
+            }
+
+            .project {
+                min-height: auto;
+            }
+
+            .project.featured {
+                min-height: auto;
+            }
+
+            .stack-item {
+                min-width: 50%;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .footer-inner {
+                flex-direction: column;
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+    <div class="container nav-inner">
+
+        <a href="#home" class="logo">
+            Anish<span>.</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <a
+            class="nav-button"
+            href="https://www.linkedin.com/in/anish-d-0a53b13a1/"
+            target="_blank" rel="noopener noreferrer"
+            aria-label="Open Anish D's LinkedIn profile"
+        >
+            LinkedIn ↗
+        </a>
+        <a
+            class="nav-button"
+            href="https://github.com/Anish-vyronfounder"
+            target="_blank" rel="noopener noreferrer"
+        >
+            GitHub ↗
+        </a>
+
+    </div>
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<main>
+
+<section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+        <div class="reveal">
+
+            <div class="eyebrow">
+                <span class="status-dot"></span>
+                Building intelligent systems
+            </div>
+
+            <h1>
+                Anish D
+                <br>
+                <span class="outline">AI & ML.</span>
+            </h1>
+
+            <p class="hero-description">
+                I build practical AI systems at the intersection of
+                <strong>Computer Vision, Machine Learning, RAG and Generative AI.</strong>
+                Currently pursuing B.E. Computer Science and Engineering
+                (AI & ML) at Sengunthar Engineering College.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="#projects" class="btn btn-primary">
+                    View my work →
+                </a>
+
+                <a
+                    href="https://github.com/Anish-vyronfounder"
+                    target="_blank" rel="noopener noreferrer"
+                    class="btn btn-secondary"
+                >
+                    GitHub ↗
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/anish-d-0a53b13a1/"
+                    target="_blank" rel="noopener noreferrer"
+                    class="btn btn-secondary"
+                >
+                    LinkedIn ↗
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card reveal">
+
+            <div class="floating-label label-one">
+                Computer Vision
+            </div>
+
+            <div class="floating-label label-two">
+                RAG Systems
+            </div>
+
+            <div class="floating-label label-three">
+                Machine Learning
+            </div>
+
+            <div class="orbit">
+                <div class="core">AD</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div>
+                <div class="section-number">01 — ABOUT</div>
+                <h2>Behind the code.</h2>
+            </div>
+
+            <p class="section-description">
+                A student developer focused on turning AI concepts
+                into useful, working products.
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-card reveal">
+
+                <h3>Who I am</h3>
+
+                <p>
+                    I'm Anish D, an AI & ML student who enjoys building
+                    systems rather than only studying them. My work spans
+                    machine learning, computer vision, RAG pipelines,
+                    backend APIs and AI-powered applications.
+                </p>
+
+                <br>
+
+                <p>
+                    I am particularly interested in understanding how
+                    individual AI components come together to form
+                    complete, production-oriented systems.
+                </p>
+
+            </div>
+
+
+            <div class="about-card reveal">
+
+                <div class="facts">
+
+                    <div class="fact">
+                        <span>Education</span>
+                        <strong>B.E. CSE (AI & ML)</strong>
+                    </div>
+
+                    <div class="fact">
+                        <span>College</span>
+                        <strong>Sengunthar Engineering College</strong>
+                    </div>
+
+                    <div class="fact">
+                        <span>Batch</span>
+                        <strong>2025 — 2029</strong>
+                    </div>
+
+                    <div class="fact">
+                        <span>CGPA</span>
+                        <strong>8.52</strong>
+                    </div>
+
+                    <div class="fact">
+                        <span>Focus</span>
+                        <strong>AI Engineering</strong>
+                    </div>
+
+                    <div class="fact">
+                        <span>Based in</span>
+                        <strong>India</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= EXPERIENCE ================= -->
+
+<section id="experience">
+    <div class="container">
+        <div class="section-heading reveal">
+            <div>
+                <div class="section-number">02 — EXPERIENCE</div>
+                <h2>Learning by doing.</h2>
+            </div>
+            <p class="section-description">
+                Internship experience across AI/ML and people operations, building
+                technical foundations and understanding how teams work.
+            </p>
+        </div>
+
+        <div class="about-grid">
+            <article class="about-card reveal">
+                <h3>AI &amp; ML Intern</h3>
+                <p><strong>EdBing Technologies · Bengaluru, India</strong></p>
+                <p style="margin-top:12px">
+                    Completed an AI and Machine Learning internship, gaining practical
+                    exposure to the AI/ML development workflow.
+                </p>
+                <div class="tags">
+                    <span class="tag">Artificial Intelligence</span>
+                    <span class="tag">Machine Learning</span>
+                </div>
+            </article>
+
+            <article class="about-card reveal">
+                <h3>HR Intern</h3>
+                <p><strong>Exyra</strong></p>
+                <p style="margin-top:12px">
+                    Completed an HR internship, developing an understanding of
+                    workplace coordination, communication and people operations.
+                </p>
+                <div class="tags">
+                    <span class="tag">Communication</span>
+                    <span class="tag">Coordination</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div>
+                <div class="section-number">03 — PROJECTS</div>
+                <h2>Things I've built.</h2>
+            </div>
+
+            <p class="section-description">
+                Real projects exploring AI, automation, computer vision
+                and intelligent software systems.
+            </p>
+
+        </div>
+
+
+        <div class="projects">
+
+
+            <!-- RRR -->
+
+            <article class="project featured reveal">
+
+                <span class="project-number">01 / FEATURED</span>
+
+                <a
+                    href="https://know-repair-build.vercel.app/"
+                    target="_blank" rel="noopener noreferrer"
+                    class="project-link"
+                >
+                    ↗
+                </a>
+
+                <h3>RRR — Know Repair Build</h3>
+
+                <p>
+                    An AI-powered repair and rebuilding platform that
+                    combines computer vision with a Retrieval-Augmented
+                    Generation pipeline to analyze components and provide
+                    practical repair, reuse, recycling and rebuilding
+                    guidance.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">RAG</span>
+                    <span class="tag">FAISS</span>
+                    <span class="tag">ChromaDB</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">Hugging Face</span>
+                    <span class="tag">Vercel</span>
+                </div>
+
+                <div class="project-glow"></div>
+
+            </article>
+
+
+            <!-- MACHINEPULSE -->
+
+            <article class="project reveal">
+
+                <span class="project-number">02</span>
+
+                <h3>MachinePulse</h3>
+
+                <p>
+                    An Industry 4.0 predictive maintenance platform
+                    connecting machine sensors, ESP32, a FastAPI backend
+                    and machine learning models to monitor machine health.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">XGBoost</span>
+                    <span class="tag">ESP32</span>
+                    <span class="tag">IoT</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">ML</span>
+                </div>
+
+                <div class="project-glow"></div>
+
+            </article>
+
+
+            <!-- VYRON -->
+
+            <article class="project reveal">
+
+                <span class="project-number">03</span>
+
+                <h3>Vyron</h3>
+
+                <p>
+                    An AI-powered safety platform exploring computer vision
+                    and deep learning for intelligent visual analysis and
+                    automated safety insights.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">OpenCV</span>
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">Computer Vision</span>
+                </div>
+
+                <div class="project-glow"></div>
+
+            </article>
+
+
+            <!-- KIKO ROBOT -->
+            <article class="project reveal">
+                <span class="project-number">04</span>
+                <h3>KIKO — Interactive Donation Robot</h3>
+                <p>
+                    A compact interactive robot concept built around an ESP32,
+                    an IR sensor and a Bluetooth speaker. The interaction flow
+                    detects a visitor, plays a welcome message, waits until the
+                    visitor leaves, and then plays a thank-you message.
+                </p>
+                <div class="tags">
+                    <span class="tag">ESP32</span>
+                    <span class="tag">Embedded Systems</span>
+                    <span class="tag">IR Sensor</span>
+                    <span class="tag">Hardware Prototyping</span>
+                </div>
+                <div class="project-glow"></div>
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+
+<section id="skills">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div>
+                <div class="section-number">04 — SKILLS</div>
+                <h2>My toolkit.</h2>
+            </div>
+
+            <p class="section-description">
+                Technologies I use to move from an idea to a working
+                AI application.
+            </p>
+
+        </div>
+
+
+        <div class="skills-grid">
+
+
+            <div class="skill-group reveal">
+
+                <div class="skill-icon">⌘</div>
+
+                <h3>Programming</h3>
+
+                <p>
+                    Python<br>
+                    SQL<br>
+                    C
+                </p>
+
+            </div>
+
+
+            <div class="skill-group reveal">
+
+                <div class="skill-icon">◈</div>
+
+                <h3>Machine Learning</h3>
+
+                <p>
+                    NumPy<br>
+                    Pandas<br>
+                    Scikit-learn<br>
+                    XGBoost
+                </p>
+
+            </div>
+
+
+            <div class="skill-group reveal">
+
+                <div class="skill-icon">◎</div>
+
+                <h3>AI & Vision</h3>
+
+                <p>
+                    TensorFlow<br>
+                    OpenCV<br>
+                    CNNs<br>
+                    Computer Vision
+                </p>
+
+            </div>
+
+
+            <div class="skill-group reveal">
+
+                <div class="skill-icon">◇</div>
+
+                <h3>AI Engineering</h3>
+
+                <p>
+                    RAG<br>
+                    LLMs<br>
+                    Embeddings<br>
+                    FAISS<br>
+                    ChromaDB
+                </p>
+
+            </div>
+
+
+            <div class="skill-group reveal">
+
+                <div class="skill-icon">⌁</div>
+
+                <h3>Backend</h3>
+
+                <p>
+                    FastAPI<br>
+                    REST APIs<br>
+                    Python Backend
+                </p>
+
+            </div>
+
+
+            <div class="skill-group reveal">
+
+                <div class="skill-icon">△</div>
+
+                <h3>Developer Tools</h3>
+
+                <p>
+                    Git<br>
+                    GitHub<br>
+                    Docker<br>
+                    VS Code<br>
+                    Google Colab
+                </p>
+
+            </div>
+
+
+            <div class="skill-group reveal">
+
+                <div class="skill-icon">↗</div>
+
+                <h3>Deployment</h3>
+
+                <p>
+                    Vercel<br>
+                    Render<br>
+                    API Deployment
+                </p>
+
+            </div>
+
+
+            <div class="skill-group reveal">
+
+                <div class="skill-icon">∞</div>
+
+                <h3>Currently Exploring</h3>
+
+                <p>
+                    Generative AI<br>
+                    AI Architecture<br>
+                    Production AI<br>
+                    Intelligent Systems
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TECHNOLOGY STRIP ================= -->
+
+<section style="padding-top: 30px; padding-bottom: 100px;">
+
+    <div class="container">
+
+        <div class="stack reveal">
+
+            <div class="stack-item">Python</div>
+            <div class="stack-item">TensorFlow</div>
+            <div class="stack-item">OpenCV</div>
+            <div class="stack-item">FastAPI</div>
+            <div class="stack-item">RAG</div>
+            <div class="stack-item">FAISS</div>
+            <div class="stack-item">Git</div>
+            <div class="stack-item">Docker</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="contact reveal">
+
+            <div class="section-number">05 — CONTACT</div>
+
+            <h2>
+                Let's build<br>
+                something useful.
+            </h2>
+
+            <p>
+                I'm always interested in AI projects, collaborations,
+                internships and opportunities to learn by building.
+            </p>
+
+            <div class="contact-links">
+
+                <a
+                    href="mailto:anishd1922@gmail.com"
+                    class="btn btn-primary"
+                    aria-label="Email Anish D at anishd1922@gmail.com"
+                >
+                    Email · anishd1922@gmail.com →
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/anish-d-0a53b13a1/"
+                    target="_blank" rel="noopener noreferrer"
+                    class="btn btn-secondary"
+                >
+                    LinkedIn ↗
+                </a>
+
+                <a
+                    href="https://github.com/Anish-vyronfounder"
+                    target="_blank" rel="noopener noreferrer"
+                    class="btn btn-secondary"
+                >
+                    GitHub ↗
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <span>
+            © 2026 Anish D
+        </span>
+
+        <span>
+            Designed & built with curiosity.
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    /* Scroll reveal */
+
+    if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+    document.querySelectorAll(".reveal").forEach((element) => {
+        observer.observe(element);
+    });
+    } else {
+        document.querySelectorAll(".reveal").forEach((element) => {
+            element.classList.add("visible");
+        });
+    }
+
+    /* Small navigation enhancement */
+
+    const nav = document.querySelector("nav");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 30) {
+            nav.style.borderBottomColor =
+                "rgba(255,255,255,0.09)";
+        } else {
+            nav.style.borderBottomColor =
+                "rgba(255,255,255,0.05)";
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
